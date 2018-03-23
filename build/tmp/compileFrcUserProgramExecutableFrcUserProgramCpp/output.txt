@@ -1,14 +1,6 @@
 See file:///home/bluepiggy49/AndrewsBuildableCode/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramExecutableFrcUserProgramCpp.
-compiling intake.cpp successful.
-
-compiling valuecontrol.cpp successful.
-
-compiling PID.cpp successful.
+compiling drivebase.cpp successful.
 
 compiling Robot.cpp successful.
-
-compiling scissor.cpp successful.
-
-compiling joystickscissor.cpp successful.
 
 Finished compileFrcUserProgramExecutableFrcUserProgramCpp, see full log file:///home/bluepiggy49/AndrewsBuildableCode/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt.

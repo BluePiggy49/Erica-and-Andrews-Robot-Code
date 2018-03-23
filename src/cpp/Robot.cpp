@@ -9,6 +9,7 @@
 #include <intake.h>
 #include <joystickscissor.h>
 #include <PID.h>
+#include <drivebase.h>
 
 using namespace frc;
 using namespace ValueControl;
@@ -21,6 +22,7 @@ class Robot: public IterativeRobot {
 	DigitalInput *limitswitch_scissorlift_left,*limitswitch_scissorlift_right;
 	JoystickScissorLift *joystick_scissor_lift;
 	PID *pid;
+	DriveBase *drivebase;
 
 //analog buttons
 	double move, turn, scissorlift_down, scissorlift_up;
@@ -69,6 +71,9 @@ class Robot: public IterativeRobot {
 //PID	
 	pid = new PID(drive_talon_left_enc, drive_talon_right_enc);
 	pid->pidSet();
+
+//DriveBase
+	drivebase = new DriveBase(drive_talon_left_enc, drive_talon_left_noenc, drive_talon_right_enc, drive_talon_right_noenc, joy);	
 }
 
 
@@ -84,19 +89,7 @@ class Robot: public IterativeRobot {
     void TeleopInit() {
 }
     void TeleopPeriodic() {
-//drive
-	move=joy->GetRawAxis(1);//forward axis
-	move=pow(move,3);
-	
-	turn=joy->GetRawAxis(4);//angular axis
-	turn=pow(move,3);
-	
-	// left wheels
-	drive_talon_left_enc->Set(ControlMode::PercentOutput, constrain(turn-move,0,1) * DRIVE_SPEED );
-	//right wheels
-	drive_talon_right_enc->Set(ControlMode::PercentOutput, constrain(turn+move,0,1) * DRIVE_SPEED );
-
-				
+    drivebase->run_loop();
 	joystick_scissor_lift->run_scissorjoystick();
 	intake->Start_Intake(0.5, -0.5);
 }
