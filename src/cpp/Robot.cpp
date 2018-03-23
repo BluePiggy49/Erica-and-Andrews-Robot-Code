@@ -8,6 +8,7 @@
 #include <valuecontrol.h>
 #include <intake.h>
 #include <joystickscissor.h>
+#include <PID.h>
 
 using namespace frc;
 using namespace ValueControl;
@@ -19,6 +20,7 @@ class Robot: public IterativeRobot {
 	Intake *intake;
 	DigitalInput *limitswitch_scissorlift_left,*limitswitch_scissorlift_right;
 	JoystickScissorLift *joystick_scissor_lift;
+	PID *pid;
 
 //analog buttons
 	double move, turn, scissorlift_down, scissorlift_up;
@@ -63,21 +65,10 @@ class Robot: public IterativeRobot {
 
 //joystick scissor lift
 	joystick_scissor_lift = new JoystickScissorLift(joy, scissorlift);
-	
+	pid = new PID(drive_talon_left_enc, drive_talon_right_enc);
+	pid->pidSet();
 }
 
-	void pidSet(){
-		drive_talon_left_enc->Config_kF(0, bunnybotFgainVelocity, talon_timeout_ms);
-		drive_talon_left_enc->Config_kP(0, SmartDashboard::GetNumber("DB/Slider 1",0.0) , talon_timeout_ms);
-		drive_talon_left_enc->Config_kI(0, SmartDashboard::GetNumber("DB/Slider 2",0.0) , talon_timeout_ms);
-		drive_talon_left_enc->Config_kD(0, SmartDashboard::GetNumber("DB/Slider 3",0.0) , talon_timeout_ms);
-
-		drive_talon_right_enc->Config_kF(0, bunnybotFgainVelocity, talon_timeout_ms);
-		drive_talon_right_enc->Config_kP(0, SmartDashboard::GetNumber("DB/Slider 1",0.0) , talon_timeout_ms);
-		drive_talon_right_enc->Config_kI(0, SmartDashboard::GetNumber("DB/Slider 2",0.0) , talon_timeout_ms);
-		drive_talon_right_enc->Config_kD(0, SmartDashboard::GetNumber("DB/Slider 3",0.0) , talon_timeout_ms);
-
-	}
 
     void DisabledInit() {
 	scissorlift->stop_loop();
@@ -85,8 +76,6 @@ class Robot: public IterativeRobot {
     void DisabledPeriodic() { }
 
     void AutonomousInit() {
-	pidSet();
-	drive_talon_left_enc->Set(ControlMode::Velocity,500);
 }
     void AutonomousPeriodic() {
 //	std::cout<<drive_talon_left_enc->GetSelectedSensorVelocity(0)<<"\t"<<drive_talon_left_enc->GetClosedLoopError(0)<<std::endl;
@@ -103,7 +92,6 @@ class Robot: public IterativeRobot {
  \____/            \____/
 */
     void TeleopInit() {
-	//pidSet();
 }
     void TeleopPeriodic() {
     	

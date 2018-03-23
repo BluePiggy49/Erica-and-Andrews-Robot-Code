@@ -1,24 +1,14 @@
 See file:///home/bluepiggy49/AndrewsBuildableCode/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramExecutableFrcUserProgramCpp.
-compiling Robot.cpp failed.
-/home/bluepiggy49/AndrewsBuildableCode/src/cpp/Robot.cpp: In member function 'virtual void Robot::TeleopPeriodic()':
-/home/bluepiggy49/AndrewsBuildableCode/src/cpp/Robot.cpp:111:2: error: 'move' was not declared in this scope
-  move=joy->GetRawAxis(1);//forward axis
-  ^
-/home/bluepiggy49/AndrewsBuildableCode/src/cpp/Robot.cpp:111:2: note: suggested alternative:
-In file included from /usr/arm-frc-linux-gnueabi/include/c++/5.5.0/deque:64:0,
-                 from /usr/arm-frc-linux-gnueabi/include/c++/5.5.0/stack:60,
-                 from /home/bluepiggy49/AndrewsBuildableCode/build/tmp/expandedArchives/wpiutil-cpp-3.1.0-headers.zip_8913f4f6489a6d0e0336260f474dc3a0/llvm/FileSystem.h:37,
-                 from /home/bluepiggy49/AndrewsBuildableCode/build/tmp/expandedArchives/wpiutil-cpp-3.1.0-headers.zip_8913f4f6489a6d0e0336260f474dc3a0/llvm/raw_ostream.h:17,
-                 from /home/bluepiggy49/AndrewsBuildableCode/build/tmp/expandedArchives/wpilibc-2018.3.2-headers.zip_4790c768d89540161556bab2475dfed0/SafePWM.h:12,
-                 from /home/bluepiggy49/AndrewsBuildableCode/build/tmp/expandedArchives/wpilibc-2018.3.2-headers.zip_4790c768d89540161556bab2475dfed0/PWMSpeedController.h:10,
-                 from /home/bluepiggy49/AndrewsBuildableCode/build/tmp/expandedArchives/wpilibc-2018.3.2-headers.zip_4790c768d89540161556bab2475dfed0/DMC60.h:10,
-                 from /home/bluepiggy49/AndrewsBuildableCode/build/tmp/expandedArchives/wpilibc-2018.3.2-headers.zip_4790c768d89540161556bab2475dfed0/WPILib.h:40,
-                 from /home/bluepiggy49/AndrewsBuildableCode/src/cpp/Robot.cpp:1:
-/usr/arm-frc-linux-gnueabi/include/c++/5.5.0/bits/stl_deque.h:422:5: note:   'std::move'
-     move(_Deque_iterator<_Tp, _Tp&, _Tp*> __first,
-     ^
-/home/bluepiggy49/AndrewsBuildableCode/src/cpp/Robot.cpp:114:2: error: 'turn' was not declared in this scope
-  turn=joy->GetRawAxis(4);//angular axis
-  ^
+compiling intake.cpp successful.
+
+compiling valuecontrol.cpp successful.
+
+compiling PID.cpp successful.
+
+compiling Robot.cpp successful.
+
+compiling scissor.cpp successful.
+
+compiling joystickscissor.cpp successful.
 
 Finished compileFrcUserProgramExecutableFrcUserProgramCpp, see full log file:///home/bluepiggy49/AndrewsBuildableCode/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt.
