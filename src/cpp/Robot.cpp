@@ -65,6 +65,8 @@ class Robot: public IterativeRobot {
 
 //joystick scissor lift
 	joystick_scissor_lift = new JoystickScissorLift(joy, scissorlift);
+
+//PID	
 	pid = new PID(drive_talon_left_enc, drive_talon_right_enc);
 	pid->pidSet();
 }
@@ -78,24 +80,10 @@ class Robot: public IterativeRobot {
     void AutonomousInit() {
 }
     void AutonomousPeriodic() {
-//	std::cout<<drive_talon_left_enc->GetSelectedSensorVelocity(0)<<"\t"<<drive_talon_left_enc->GetClosedLoopError(0)<<std::endl;
 }
-
-/*    A2           A3			A2,A3=	scissorlift
-   _/III\4_______/III\5			4=	rear head
-  /  A1             3  \		3=	auto climb
- /  (8)A0  6 H 7  2   1 \<-trg		2=	auto align?
- \       ^          0   /<-top		0,1=	suck i/o
- /     <POV>    A5      \
-/        v     (9)A4     \		A1,A4=	drive
-\      ____________      /
- \____/            \____/
-*/
     void TeleopInit() {
 }
     void TeleopPeriodic() {
-    	
-   
 //drive
 	move=joy->GetRawAxis(1);//forward axis
 	move=pow(move,3);
