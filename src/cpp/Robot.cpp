@@ -19,19 +19,9 @@ class Robot: public IterativeRobot {
 	Intake *intake;
 	DigitalInput *limitswitch_scissorlift_left,*limitswitch_scissorlift_right;
 	JoystickScissorLift *joystick_scissor_lift;
+
 //analog buttons
 	double move, turn, scissorlift_down, scissorlift_up;
-//on-off buttons
-	bool intake_in_button,intake_out_button,autoalign,winch_button;
-	
-//misc variables
-	int scissorlift_position_mode;
-	bool scissorlift_downLast=true;
-	bool scissorlift_upLast=true;
-	bool wasAtScale=false;
-	
-	bool AoffLast=true;
-	bool intake_in=false;
 
     void RobotInit() {
 //define talons
@@ -117,7 +107,7 @@ class Robot: public IterativeRobot {
 }
     void TeleopPeriodic() {
     	
-    
+   
 //drive
 	move=joy->GetRawAxis(1);//forward axis
 	move=pow(move,3);
@@ -130,14 +120,9 @@ class Robot: public IterativeRobot {
 	//right wheels
 	drive_talon_right_enc->Set(ControlMode::PercentOutput, constrain(turn+move,0,1) * DRIVE_SPEED );
 
-					////////////////////////////////////////////////////////////////
-//scissorlift
+				
 	joystick_scissor_lift->run_scissorjoystick();
 	intake->Start_Intake(0.5, -0.5);
-////////////////////////////////////////////////////////////////
-	
-//Intake code is missing. Without the limit switches, it won't work. New code currently in construction.
-
 }
 
     void TestInit() {}
