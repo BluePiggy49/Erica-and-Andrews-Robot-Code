@@ -52,7 +52,7 @@ class Robot: public IterativeRobot {
 	intake_talon_right = new TalonSRX(num_intake_talon_right);
 	
 //joystick
-	joy=new Joystick(0);
+	joy = new Joystick(0);
 	
 //limit switches
 	limitswitch_scissorlift_left = new DigitalInput(num_limitswitch_scissorlift_left);
