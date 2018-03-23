@@ -12,7 +12,7 @@ namespace ValueControl
 { 
 	
 	double constrain(double val,double lower,double upper);
-
+	float exponent_mirrored(float val, int expo);
 	
 };
 #endif

@@ -14,3 +14,6 @@ double ValueControl::constrain(double val,double lower,double upper){
 		return val;
 	}
 }
+float ValueControl::exponent_mirrored(float val, int expo){
+	return pow( fabs(val) , expo) * (val > 0 ? 1.0 : -1.0);
+}
