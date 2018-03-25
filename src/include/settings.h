@@ -30,6 +30,14 @@ enum LimitSwitchState {
 	Open = 1,
 };
 
+float scissor_sync_p_gain = 1.0;
+float scissor_max_peak_output = 0.3;
+
+const float scissorlift_one_rotation_nu = 4096.0;
+const float scissorlift_minumum_height_in = 0.0;
+const float scissorlift_maximum_height_in = -8.75;
+const float scissorlift_in_to_nu = scissorlift_one_rotation_nu * 5.0;
+
 const float throttle_cutoff=0.4;
 const float talon_timeout_ms=10;
 

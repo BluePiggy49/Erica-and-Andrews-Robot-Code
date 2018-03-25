@@ -1,15 +1,5 @@
 #include <drivebase.h>
-#include <WPILib.h>
-#include <ctre/Phoenix.h>
-#include <iostream>
-#include <Joystick.h>
-#include <cmath>
-#include <settings.h>
-#include <scissor.h>
 #include <valuecontrol.h>
-#include <intake.h>
-#include <joystickscissor.h>
-#include <PID.h>
 
 void DriveBase::transform_the_stuff(){
 	this->move=ValueControl::exponent_mirrored(this->move, 2);

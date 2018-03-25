@@ -9,7 +9,6 @@
 #include <settings.h>
 #include <scissor.h>
 #include <valuecontrol.h>
-#include <intake.h>
 
 class PID
 {
