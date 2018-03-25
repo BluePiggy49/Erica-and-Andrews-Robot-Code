@@ -11,19 +11,18 @@
 #include <joystickscissor.h>
 #include <PID.h>
 
-void DriveBase::transform_the_stuff(){
-	this->move=ValueControl::exponent_mirrored(this->move, 2);
-	this->turn=ValueControl::exponent_mirrored(this->turn, 3);
-	this->wheel_left=ValueControl::constrain( move-turn , -1.0,1.0);
-	this->wheel_right=ValueControl::constrain( move+turn , -1.0,1.0);
-}
-
+using namespace ValueControl;
 void DriveBase::run_loop(){
-	this->move=this->joy->GetRawAxis(1);
-	this->turn=this->joy->GetRawAxis(4);
+	
+	std::cout<<"Blue Piggy, Red Piggy"<<std::endl;
+	
+	float move= exponent_mirrored(joy->GetRawAxis(4), 2);
+	std::cout<<"Little Piggy, Big Piggy"<<std::endl;
+	float turn= exponent_mirrored(joy->GetRawAxis(1), 3);
+	float wheel_left= constrain( move-turn , -1.0,1.0);
+	float wheel_right= constrain( move+turn , -1.0,1.0);
 
-	this->transform_the_stuff();
+	drive_talon_left_enc->Set(ControlMode::PercentOutput, -1 * wheel_left);
+	drive_talon_right_enc->Set(ControlMode::PercentOutput, -1 * wheel_right);
 
-	this->drive_talon_left_enc->Set(ControlMode::PercentOutput, wheel_left);
-	this->drive_talon_right_enc->Set(ControlMode::PercentOutput, wheel_right);
 }

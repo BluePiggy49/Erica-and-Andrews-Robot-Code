@@ -1,4 +1,4 @@
-#ifndef SCISSOR_JOY_H
+/*#ifndef SCISSOR_JOY_H
 #define SCISSOR_JOY_H
 
 #include <WPILib.h>
@@ -34,4 +34,4 @@ private:
 		
 };
 
-#endif
+#endif*/

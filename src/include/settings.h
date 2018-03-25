@@ -24,11 +24,12 @@ const int num_intake_talon_right = 10;
 const int num_limitswitch_scissorlift_left = 1;
 const int num_limitswitch_scissorlift_right = 2;
 
-//Turns out DIO pins float at '1' (Positive) So all of our limit switches are Normally Open and put 0 (Negative) when closed.
+//Turns out DIO pins float at '1' (Positive) So all of our limit switches are Normally Open and put 0 (Negative) when closed
+/*
 enum LimitSwitchState {
 	Closed = 0,
 	Open = 1,
-};
+};*/
 
 const float throttle_cutoff=0.4;
 const float talon_timeout_ms=10;

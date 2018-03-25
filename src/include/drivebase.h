@@ -12,6 +12,7 @@
 #include <intake.h>
 #include <joystickscissor.h>
 #include <PID.h>
+#include <Solenoid.h>
 
 
 class DriveBase {
@@ -21,7 +22,7 @@ class DriveBase {
 			   TalonSRX* drive_talon_right_enc,
 			   TalonSRX* drive_talon_right_noenc,
 			   Joystick* joy)
-			: drive_talon_left_enc(drive_talon_left_enc), drive_talon_left_noenc(drive_talon_left_noenc), drive_talon_right_enc(drive_talon_right_enc), drive_talon_right_noenc(drive_talon_right_noenc) {};
+			: drive_talon_left_enc(drive_talon_left_enc), drive_talon_left_noenc(drive_talon_left_noenc), drive_talon_right_enc(drive_talon_right_enc), drive_talon_right_noenc(drive_talon_right_noenc), joy(joy) {};
 
 		void run_loop();
 	private:
@@ -30,7 +31,6 @@ class DriveBase {
 			   TalonSRX* drive_talon_right_enc;
 			   TalonSRX* drive_talon_right_noenc;
 			   Joystick* joy;
-		void transform_the_stuff();
-		float move, turn, wheel_left, wheel_right;
+	
 };
 #endif

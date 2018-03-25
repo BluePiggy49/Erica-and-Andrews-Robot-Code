@@ -1,4 +1,4 @@
-#include <WPILib.h>
+/*#include <WPILib.h>
 #include <ctre/Phoenix.h>
 #include <iostream>
 #include <Joystick.h>
@@ -87,4 +87,4 @@ void JoystickScissorLift::run_scissorjoystick(){
 	}else{
 		scissorlift_upLast=false;
 	}
-}
+}*/
