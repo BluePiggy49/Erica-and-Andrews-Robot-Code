@@ -14,7 +14,7 @@
 
 
 void Pneumatic::run_pneumatics(){
-	bool Getting_the_pneumatic_value = solenoid->Get();
+	bool Getting_the_pneumatic_value = solenoid_1->Get();
 	bool Getting_the_value_of_the_left_button = joy->GetRawButton(1);
 	Left_Button = Getting_the_value_of_the_left_button;
 	if (buttonstate_Left == 0)
@@ -32,7 +32,7 @@ void Pneumatic::run_pneumatics(){
             }
             if (Turning_Left_Button_On){
                 solenoid_1->Set(Getting_the_pneumatic_value + 1);
-                solenoid_2->Set(Getting_the_pneumatic_value + 1);
+                solenoid_2->Set(Getting_the_pneumatic_value);
                
 			  }
             if (Toggle_On_Variable_Left)
@@ -50,7 +50,7 @@ void Pneumatic::run_pneumatics(){
             if (Turning_Left_Button_Off)
             {
                 solenoid_1->Set(Getting_the_pneumatic_value + 1);
-                solenoid_2->Set(Getting_the_pneumatic_value + 1);
+                solenoid_2->Set(Getting_the_pneumatic_value);
               
             }
             if (Toggle_Off_Variable_Left)
