@@ -17,12 +17,8 @@ void Intake::Start_Intake(float intake_speed_in, float intake_speed_out){
 		intake_talon_left->Set(ControlMode::PercentOutput, intake_speed_in);
 		intake_talon_right->Set(ControlMode::PercentOutput, intake_speed_in);
 	}
-	else if (Getting_Left_Button && Getting_Right_Button)
+	else if (Getting_Left_Button)
 	{
-		intake_talon_left->Set(ControlMode::PercentOutput, intake_speed_in);
-		intake_talon_right->Set(ControlMode::PercentOutput, intake_speed_in);
-	}
-	else if (Getting_Left_Button && !Getting_Right_Button){
 		intake_talon_left->Set(ControlMode::PercentOutput, intake_speed_out);
 		intake_talon_right->Set(ControlMode::PercentOutput, intake_speed_out);
 	}
