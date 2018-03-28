@@ -10,7 +10,6 @@
 #include <scissor.h>
 #include <valuecontrol.h>
 #include <intake.h>
-#include <joystickscissor.h>
 #include <PID.h>
 #include <Solenoid.h>
 

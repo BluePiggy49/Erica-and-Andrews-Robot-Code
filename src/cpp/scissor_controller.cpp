@@ -1,11 +1,3 @@
-#include <WPILib.h>
-#include <ctre/Phoenix.h>
-#include <iostream>
-#include <Joystick.h>
-#include <cmath>
-#include <settings.h>
-#include <scissor.h>
-#include <valuecontrol.h>
 #include <scissor_controller.h>
 
 void ScissorController::scissorlift_increment_position(float direction){

@@ -1,15 +1,3 @@
-#include <drivebase.h>
-#include <WPILib.h>
-#include <ctre/Phoenix.h>
-#include <iostream>
-#include <Joystick.h>
-#include <cmath>
-#include <settings.h>
-#include <scissor.h>
-#include <valuecontrol.h>
-#include <intake.h>
-#include <joystickscissor.h>
-#include <PID.h>
 #include <pneumatic.h>
 
 

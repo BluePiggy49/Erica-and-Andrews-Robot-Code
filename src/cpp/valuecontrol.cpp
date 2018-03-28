@@ -1,8 +1,3 @@
-#include <WPILib.h>
-#include <ctre/Phoenix.h>
-#include <iostream>
-#include <Joystick.h>
-#include <cmath>
 #include <valuecontrol.h>
 
 double ValueControl::constrain(double val,double lower,double upper){

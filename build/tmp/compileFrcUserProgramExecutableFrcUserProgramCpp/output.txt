@@ -1,4 +1,18 @@
-See file:///home/bluepiggy49/AndrewsBuildableCode/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramExecutableFrcUserProgramCpp.
+See file:///home/craptop/gitclones/Erica-and-Andrews-Robot-Code/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramExecutableFrcUserProgramCpp.
+compiling pneumatic.cpp successful.
+
+compiling valuecontrol.cpp successful.
+
+compiling drivebase.cpp successful.
+
+compiling Robot.cpp successful.
+
+compiling scissor.cpp successful.
+
 compiling PID.cpp successful.
 
-Finished compileFrcUserProgramExecutableFrcUserProgramCpp, see full log file:///home/bluepiggy49/AndrewsBuildableCode/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt.
+compiling scissor_controller.cpp successful.
+
+compiling intake.cpp successful.
+
+Finished compileFrcUserProgramExecutableFrcUserProgramCpp, see full log file:///home/craptop/gitclones/Erica-and-Andrews-Robot-Code/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt.
