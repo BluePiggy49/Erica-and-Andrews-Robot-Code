@@ -1,5 +1,6 @@
 -o
 /home/bluepiggy49/AndrewsBuildableCode/build/exe/frcUserProgram/frcUserProgram
+/home/bluepiggy49/AndrewsBuildableCode/build/objs/frcUserProgram/frcUserProgramCpp/1kgsi1w3fxxp19g1p67ybb5gx/scissor_controller.o
 /home/bluepiggy49/AndrewsBuildableCode/build/objs/frcUserProgram/frcUserProgramCpp/7ewmbd2h6ju92eygynj9i5rbd/pneumatic.o
 /home/bluepiggy49/AndrewsBuildableCode/build/objs/frcUserProgram/frcUserProgramCpp/8ljbyoe5cmno4aocrv8a5trb8/Robot.o
 /home/bluepiggy49/AndrewsBuildableCode/build/objs/frcUserProgram/frcUserProgramCpp/1zxvwgsmeukwk9par6ldpxhew/scissor.o

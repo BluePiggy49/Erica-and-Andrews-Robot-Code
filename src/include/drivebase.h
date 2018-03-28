@@ -9,8 +9,7 @@
 #include <settings.h>
 #include <scissor.h>
 #include <valuecontrol.h>
-#include <intake.h>
-#include <joystickscissor.h>
+#include <scissor_controller.h>
 #include <PID.h>
 #include <Solenoid.h>
 

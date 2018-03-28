@@ -11,7 +11,6 @@
 #include <PID.h>
 #include <drivebase.h>
 #include <Solenoid.h>
-#include <common_settings.h>
 #include <pneumatic.h>
 
 using namespace frc;
@@ -65,7 +64,7 @@ class Robot: public IterativeRobot {
 	
 //scissor lift
 	scissorlift = new ScissorLift(scissorlift_talon_left,scissorlift_talon_right, limitswitch_scissorlift_left, limitswitch_scissorlift_right);
-	scissorlift->start_loop(scissorlift_p_gain, scissorlift_max_speed);
+	scissorlift->start_loop((1.4/4096), 1);
 
 //intake
 	intake = new Intake(intake_talon_right, intake_talon_left, joy);
