@@ -23,7 +23,7 @@ class ScissorLift {
 		void set_position(float target);  
 		void increment_position(float increment_direction);
 
-
+		bool home(float speed);
 	private:
 		float target = 0.0;
 		Notifier* notifier;
