@@ -7,7 +7,7 @@
 #include <scissor.h>
 #include <valuecontrol.h>
 #include <intake.h>
-//#include <joystickscissor.h>
+#include <scissor_controller.h>
 #include <PID.h>
 #include <drivebase.h>
 #include <Solenoid.h>
@@ -22,30 +22,26 @@ class Robot: public IterativeRobot {
 	Joystick *joy;
 	Intake *intake;
 	DigitalInput *limitswitch_scissorlift_left,*limitswitch_scissorlift_right;
-	//JoystickScissorLift *joystick_scissor_lift;
+	ScissorLiftController *joystick_scissor_lift;
 	PID *pid;
 	Solenoid *solenoid_1, *solenoid_2;
 	DriveBase *drivebase;
 	Pneumatic *pneumatic;
 
-//analog buttons
-	double move, turn, scissorlift_down, scissorlift_up;
-
     void RobotInit() {
 //define talons
-	std::cout<<"If you're happy and a pig, clap your hands! *clap, clap* orange pig"<<std::endl;
-	drive_talon_left_enc = new TalonSRX(2);
+	drive_talon_left_enc = new TalonSRX(7);
 	drive_talon_left_enc->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0,talon_timeout_ms);
 	drive_talon_left_noenc = new TalonSRX(3);
 	drive_talon_left_noenc->Set(ControlMode::Follower, num_drive_talon_left_enc);
-	drive_talon_right_enc = new TalonSRX(7);
+	drive_talon_right_enc = new TalonSRX(2);
 	drive_talon_right_enc->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0,talon_timeout_ms);
 	drive_talon_right_noenc = new TalonSRX(5);
 	drive_talon_right_noenc->Set(ControlMode::Follower, num_drive_talon_right_enc);
 
 //scissor
-	scissorlift_talon_left = new TalonSRX(num_scissorlift_talon_left);
-	scissorlift_talon_right = new TalonSRX(num_scissorlift_talon_right);
+	scissorlift_talon_left = new TalonSRX(1);
+	scissorlift_talon_right = new TalonSRX(8);
 
 //climber
 	climber_talon_noenc = new TalonSRX(num_climber_talon_noenc);
@@ -58,55 +54,67 @@ class Robot: public IterativeRobot {
 //joystick
 	joy = new Joystick(0);
 	
-//limit switches
-	limitswitch_scissorlift_left = new DigitalInput(num_limitswitch_scissorlift_left);
-	limitswitch_scissorlift_right = new DigitalInput(num_limitswitch_scissorlift_right);
-	
 //scissor lift
-	scissorlift = new ScissorLift(scissorlift_talon_left,scissorlift_talon_right, limitswitch_scissorlift_left, limitswitch_scissorlift_right);
-	scissorlift->start_loop((1.4/4096), 1);
+	scissorlift = new ScissorLift(scissorlift_talon_left,scissorlift_talon_right);
 
 //intake
 	intake = new Intake(intake_talon_right, intake_talon_left, joy);
 
 //joystick scissor lift
-	//joystick_scissor_lift = new JoystickScissorLift(joy, scissorlift);
+	joystick_scissor_lift = new ScissorLiftController(joy, scissorlift, 4096/10);
 
 //PID	
-	pid = new PID(drive_talon_left_enc, drive_talon_right_enc);
-	pid->pidSet();
+	//pid = new PID(drive_talon_left_enc, drive_talon_right_enc, scissorlift_talon_left, scissorlift_talon_right);
+	//pid->pidSet();
+		drive_talon_left_enc->Config_kF(0, bunnybotFgainVelocity, talon_timeout_ms);
+		drive_talon_left_enc->Config_kP(0, SmartDashboard::GetNumber("DB/Slider 1",0.0) , talon_timeout_ms);
+		drive_talon_left_enc->Config_kI(0, SmartDashboard::GetNumber("DB/Slider 2",0.0) , talon_timeout_ms);
+		drive_talon_left_enc->Config_kD(0, SmartDashboard::GetNumber("DB/Slider 3",0.0) , talon_timeout_ms);
 
-//Soldenoids
-	solenoid_1 = new Solenoid(1);
-	solenoid_2 = new Solenoid(2);
-	pneumatic = new Pneumatic(solenoid_1, solenoid_2, joy);	
+		drive_talon_right_enc->Config_kF(0, bunnybotFgainVelocity, talon_timeout_ms);
+		drive_talon_right_enc->Config_kP(0, SmartDashboard::GetNumber("DB/Slider 1",0.0) , talon_timeout_ms);
+		drive_talon_right_enc->Config_kI(0, SmartDashboard::GetNumber("DB/Slider 2",0.0) , talon_timeout_ms);
+		drive_talon_right_enc->Config_kD(0, SmartDashboard::GetNumber("DB/Slider 3",0.0) , talon_timeout_ms);
+
+		scissorlift_talon_left->Config_kF(0, 0, talon_timeout_ms);
+		scissorlift_talon_left->Config_kP(0, 1, talon_timeout_ms);
+		scissorlift_talon_left->Config_kI(0, 0, talon_timeout_ms);
+		scissorlift_talon_left->Config_kD(0, 10, talon_timeout_ms);
+
+		scissorlift_talon_right->Config_kF(0, 0, talon_timeout_ms);
+		scissorlift_talon_right->Config_kP(0, 1, talon_timeout_ms);
+		scissorlift_talon_right->Config_kI(0, 0, talon_timeout_ms);
+		scissorlift_talon_right->Config_kD(0, 10, talon_timeout_ms);
 
 //DriveBase
-	drivebase = new DriveBase(drive_talon_left_enc, drive_talon_left_noenc, drive_talon_right_enc, drive_talon_right_noenc, joy);	 
-	std::cout<<"If you love pigs, so do I"<<std::endl;
+	drivebase = new DriveBase(drive_talon_left_enc, drive_talon_left_noenc, drive_talon_right_enc, drive_talon_right_noenc, joy, intake_talon_left, intake_talon_right);	 
 }
 
 
-    void DisabledInit() {
-	scissorlift->stop_loop();
-}
-    void DisabledPeriodic() { }
+    
 
     void AutonomousInit() {
 }
     void AutonomousPeriodic() {
 }
-    void TeleopInit() {
-    	std::cout<<"Pigs are really THE BEST animal."<<std::endl;
+   void TeleopInit() { 
+   joystick_scissor_lift->start(1.4 / 4096, 1.0);
 }
     void TeleopPeriodic() {
-    drivebase->run_loop();
-	//joystick_scissor_lift->run_scissorjoystick();
-	//intake->Start_Intake(0.5, -0.5);
+	//Manual
+if(SmartDashboard::GetBoolean("DB/Button 1",0)){
+	drivebase->run_loop();
+	intake->Start_Intake(0.5, -0.5); 
+	joystick_scissor_lift->update();
+}else{
+	drivebase->run_loop();
+	intake->Start_Intake(0.5, -0.5); 
 }
+} 
 
-    void TestInit() {}
-    void TestPeriodic() {}
-
+void DisabledInit() {
+	joystick_scissor_lift->stop();
+}
+    void DisabledPeriodic() { }
 };
 START_ROBOT_CLASS(Robot);

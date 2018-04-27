@@ -1,4 +1,20 @@
-See file:///home/bluepiggy49/AndrewsBuildableCode/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramExecutableFrcUserProgramCpp.
+See file:///home/bluepiggy49/ReallySlowedDownCodePart3/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramExecutableFrcUserProgramCpp.
 compiling PID.cpp successful.
 
-Finished compileFrcUserProgramExecutableFrcUserProgramCpp, see full log file:///home/bluepiggy49/AndrewsBuildableCode/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt.
+compiling valuecontrol.cpp successful.
+
+compiling intake.cpp successful.
+
+compiling joystickscissor.cpp successful.
+
+compiling Robot.cpp successful.
+
+compiling pneumatic.cpp successful.
+
+compiling drivebase.cpp successful.
+
+compiling scissor_controller.cpp successful.
+
+compiling scissor.cpp successful.
+
+Finished compileFrcUserProgramExecutableFrcUserProgramCpp, see full log file:///home/bluepiggy49/ReallySlowedDownCodePart3/build/tmp/compileFrcUserProgramExecutableFrcUserProgramCpp/output.txt.

@@ -21,4 +21,13 @@ void PID::pidSet(){
 		drive_talon_right_enc->Config_kI(0, SmartDashboard::GetNumber("DB/Slider 2",0.0) , talon_timeout_ms);
 		drive_talon_right_enc->Config_kD(0, SmartDashboard::GetNumber("DB/Slider 3",0.0) , talon_timeout_ms);
 
+		scissorlift_talon_left->Config_kF(0, 0, talon_timeout_ms);
+		scissorlift_talon_left->Config_kP(0, 1, talon_timeout_ms);
+		scissorlift_talon_left->Config_kI(0, 0, talon_timeout_ms);
+		scissorlift_talon_left->Config_kD(0, 10, talon_timeout_ms);
+
+		scissorlift_talon_right->Config_kF(0, 0, talon_timeout_ms);
+		scissorlift_talon_right->Config_kP(0, 1, talon_timeout_ms);
+		scissorlift_talon_right->Config_kI(0, 0, talon_timeout_ms);
+		scissorlift_talon_right->Config_kD(0, 10, talon_timeout_ms);
 }

@@ -1,3 +1,4 @@
+
 #include <scissor.h>
 
 //TODO: Don't hardcode anything (AKA talon timeouts, PID loop idx)
@@ -40,6 +41,32 @@ void ScissorLift::run_loop() {
 	talon_right->ConfigPeakOutputReverse(-(max_peak_output - left_slowdown), 10);
 }
 
+bool ScissorLift::home(float speed) {
+	talon_left->ConfigPeakOutputForward(speed, 10);
+	talon_right->ConfigPeakOutputForward(speed, 10);
+	bool dio_left_depressed = dio_left->Get() == LimitSwitchState::Closed;
+	bool dio_right_depressed = dio_right->Get() == LimitSwitchState::Closed;
+	if (dio_left_depressed) {
+		talon_left->Set(ControlMode::PercentOutput, 0);
+		//std::cout << "STOP LEFT" << std::endl;
+	} else {
+		talon_left->Set(ControlMode::PercentOutput, 0.25);
+	}
+	if (dio_right_depressed) {
+		talon_right->Set(ControlMode::PercentOutput, 0);
+		//std::cout << "STOP RIGHT" << std::endl;
+	} else {
+		talon_right->Set(ControlMode::PercentOutput, 0.25);
+	}
+	if (dio_left_depressed && dio_right_depressed) {
+		target = 0.0;
+		talon_left->SetSelectedSensorPosition(0, 0, 10);
+		talon_right->SetSelectedSensorPosition(0, 0, 10);
+		return true; 
+	} else {
+		return false;
+	}
+}
 
 inline float ScissorLift::clamp_max (float input) {
 	if (input < 0.0) {
